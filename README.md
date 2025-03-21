@@ -1,5 +1,5 @@
 # MiniVim
-The text editor for Mountain Tech OS
+The text editor for [Mountain Tech OS](https://mountaintech.ru/)
 
 ![screenshot](./assets/1.png)
 
