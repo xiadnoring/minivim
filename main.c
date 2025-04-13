@@ -1807,14 +1807,20 @@ void init_params (int argc, const char *argv[]) {
         exit(-1);
     }
 
-    fd = open ((const char *)(&filepath), O_RDWR);
-    if (fd < 0) {
-        fd = creat ((const char *)(&filepath), 0755);
+    do {
+        fd = open ((const char *)(&filepath), O_RDWR);
         if (fd < 0) {
-            printf ("failed to open the file %s. fd: %d\n", (const char *)(&filepath), (int)fd);
-            exit(-1);
+            fd = creat ((const char *)(&filepath), 0755);
+            if (fd < 0) {
+                printf ("failed to open the file %s. fd: %d\n", (const char *)(&filepath), (int)fd);
+                exit(-1);
+            }
+            close(fd);
+            continue;
         }
+        break;
     }
+    while(true);
 }
 
 #ifdef MINIVIM_LINUX
