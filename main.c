@@ -812,7 +812,7 @@ void fetch_current_frame_with_row (struct row_t *frow) {
                         if (c_row < m_rows || t) {
                             if (!left && child_row_current != -1) {
                                 c_filepos = rows[array_row_index]->seek_start;
-                                left = max_size - c_filepos + 1;
+                                left = g_min(max_size, max_size - c_filepos + 1);
                                 line_start_pos = c_filepos;
                                 line_size=0;
                                 assert((left >= 0));
@@ -1807,6 +1807,7 @@ void init_params (int argc, const char *argv[]) {
         exit(-1);
     }
 
+    int attempt = 0;
     do {
         fd = open ((const char *)(&filepath), O_RDWR);
         if (fd < 0) {
@@ -1816,6 +1817,7 @@ void init_params (int argc, const char *argv[]) {
                 exit(-1);
             }
             close(fd);
+            assert((attempt++ <= 5 && "creat(...) failure"));
             continue;
         }
         break;
