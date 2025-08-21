@@ -1,13 +1,13 @@
 # MiniVim
-The text editor for [Mountain Tech OS](https://mountaintech.ru/)
+Text editor for [Mountain Tech OS](https://mountaintech.ru/)
 
 ![screenshot](./assets/1.png)
 
 ## Opportunities
-- The rows with 1000 bytes capacity
+- Support rows with 1000 bytes capacity
 - 1000 Rows
 - Without malloc, mmap
-- Have three modes: viewing, light, full-support
+- Has three modes: viewing, light, full-support
 - Can be easily improved (UTF-8 support, search, replace, permissions checks)
 - ASCII support (Tab is not supported yet)
 - Can EDIT!
@@ -16,7 +16,7 @@ The text editor for [Mountain Tech OS](https://mountaintech.ru/)
 
 ### Viewing
 Compile without any defines.
-You will only be viewing files
+You will only be able to view files
 
 ### Light
 Compile with -DMINIVIM_FILESYSTEM flag.
